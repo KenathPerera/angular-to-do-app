@@ -4,7 +4,7 @@
       <div class="card-body">
         <h5 class="card-title"><i class="fas fa-tasks"></i> Add Task
         </h5>
-        <form #form="ngForm" autocomplete="off">
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-prepend">
