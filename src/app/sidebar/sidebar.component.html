@@ -1,0 +1,92 @@
+<div class="container page-container">
+  <div class="row row-page">
+    <div class="col-3">
+      <div class="card" style="width:100%;">
+        <div class="card-body">
+          <h5 class="card-title">Add Task<div class="badge badge-pill badge-ligh"><i class="fa fa-plus"></i></div></h5>
+          <button type="button" class="btn btn-success" (click)="onClick($event)" style="cursor: pointer;font-weight: bold;">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-9">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Task</th>
+            <th scope="col">Progress</th>
+            <th scope="col">Days Left</th>
+            <th scope="col">Due Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Send Email</td>
+            <td>In Progress</td>
+            <td>3</td>
+            <td>2021/04/05</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Send Docs</td>
+            <td>To DO</td>
+            <td>3</td>
+            <td>2021/04/05</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>To Do</td>
+            <td>In Progress</td>
+            <td>5</td>
+            <td>2021/04/10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<!-- <div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      Modal Header
+      <div class="modal-header">
+        <h4 class="modal-title">Add Tasks:</h4>
+        <button type="button" class="close" data-dismiss="modal" (click) = "hide()">&times;</button>
+      </div>
+      
+      Modal body
+      <div class="modal-body">
+        <form>
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-3 col-form-label">Task Name</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Task Name">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-3 col-form-label">Progress</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Progress">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-3 col-form-label">Due Date</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Due Date">
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      Modal footer
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click) = "hide()">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div> -->

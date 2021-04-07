@@ -1,0 +1,9 @@
+.page-container{
+    /* margin:0; */
+    margin-top:3%;
+    background: #01d2be;
+}
+.row-page{
+    height: 100%;
+    width: 100%;
+}
