@@ -7,6 +7,8 @@ This is Sample Project that I created(still developing) to show my skills in Ang
 In This project I have Used Following Technologies
     * Angular 7 - Front End Development
     * .Net Core - Back End Development
+        * Install Microsoft Entity Framework
+        * Install Microsoft AspNetCore.Cors Nu Package
     * Entity Framework
     * SQLServer Database
 
