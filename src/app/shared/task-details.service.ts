@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TaskDetail } from './task-detail.model';
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +9,17 @@ export class TaskDetailsService {
 
   formData = new TaskDetail();
   readonly base_url = 'http://localhost:64318/api/'
+  taskList: TaskDetail[];
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  postTaskDetail(formData:TaskDetail){
-  return this.http.post(this.base_url+"TaskDetail",formData)
+  postTaskDetail(formData: TaskDetail) {
+    return this.http.post(this.base_url + "TaskDetail", formData)
+  }
+
+  retriveTaskDetails() {
+    this.http.get(this.base_url + "TaskDetail")
+      .toPromise()
+      .then(res => this.taskList = res as TaskDetail[])
   }
 }

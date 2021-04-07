@@ -50,10 +50,9 @@
     </div>
   </div>
   <div class="col-7">
-    <table class="table">
-      <thead>
+    <table class="table table-hover ">
+      <thead class="table-success">
         <tr>
-          <th scope="col">#</th>
           <th scope="col">Task</th>
           <th scope="col">Progress</th>
           <th scope="col">Days Left</th>
@@ -61,26 +60,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Send Email</td>
-          <td>In Progress</td>
-          <td>3</td>
-          <td>2021/04/05</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Send Docs</td>
-          <td>To DO</td>
-          <td>3</td>
-          <td>2021/04/05</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>To Do</td>
-          <td>In Progress</td>
-          <td>5</td>
-          <td>2021/04/10</td>
+        <tr *ngFor="let data of taskService.taskList">
+          <td>{{data.TaskName}}</td>
+          <td>{{data.Progress}}</td>
+          <td>{{calculateDiff(data.DueDate)}}</td>
+          <td [ngClass]="step == 'step1' ? 'my_class1' : 'my_class2'">{{data.DueDate}}</td>
         </tr>
       </tbody>
     </table>
