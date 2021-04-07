@@ -1,90 +1,89 @@
-<div class="container page-container">
-  <div class="row row-page">
-    <div class="col-5">
-      <div class="card" style="width:100%;">
-        <div class="card-body">
-          <h5 class="card-title"><i class="fas fa-tasks"></i> Add Task
-          </h5>
-          <form>
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text bg-white">
-                    <i class="fas fa-plus-square"></i>
-                  </div>
+<div class="row row-page">
+  <div class="col-5">
+    <div class="card" style="width:100%;">
+      <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-tasks"></i> Add Task
+        </h5>
+        <form #form="ngForm" autocomplete="off">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                  <i class="fas fa-plus-square"></i>
                 </div>
-                <input type="text" class="form-control" placeholder="Task Name">
               </div>
+              <input name="TaskName" #TaskName="ngModel" [(ngModel)]="taskService.formData.TaskName" type="text" class="form-control" placeholder="Task Name" required>
             </div>
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text bg-white">
-                    <i class="fas fa-spinner"></i>
-                  </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                  <i class="fas fa-spinner"></i>
                 </div>
-                <select class="form-control" aria-label="Default select example">
-                  <option selected>Select the Progress</option>
-                  <option value="1">To Do</option>
-                  <option value="2">IN Progress</option>
-                  <option value="3">Done</option>
-                </select>
               </div>
+              <select name="Progress" #Progress="ngModel" [(ngModel)]="taskService.formData.Progress" class="form-control" aria-label="Default select example">
+                <option selected>Select the Progress</option>
+                <option value="1">To Do</option>
+                <option value="2">IN Progress</option>
+                <option value="3">Done</option>
+              </select>
             </div>
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text bg-white">
-                    <i class="fas fa-calendar-day"></i>
-                  </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                  <i class="fas fa-calendar-day"></i>
                 </div>
-                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
               </div>
+              <input name="DueDate" #DueDate="ngModel" [(ngModel)]="taskService.formData.DueDate" class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" required/>
             </div>
-            <div class="form-group">
-              <button type="button" class="btn btn-success btn-lg btn-block" style="cursor: pointer;font-weight: bold;"><i class="fas fa-database"></i> Add Task</button>
-            </div>
-          </form>
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-success btn-lg btn-block" style="cursor: pointer;font-weight: bold;" type="submit"><i
+                class="fas fa-database"></i> Add Task</button>
+          </div>
+        </form>
 
-        </div>
       </div>
     </div>
-    <div class="col-7">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Task</th>
-            <th scope="col">Progress</th>
-            <th scope="col">Days Left</th>
-            <th scope="col">Due Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Send Email</td>
-            <td>In Progress</td>
-            <td>3</td>
-            <td>2021/04/05</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Send Docs</td>
-            <td>To DO</td>
-            <td>3</td>
-            <td>2021/04/05</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>To Do</td>
-            <td>In Progress</td>
-            <td>5</td>
-            <td>2021/04/10</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  </div>
+  <div class="col-7">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Task</th>
+          <th scope="col">Progress</th>
+          <th scope="col">Days Left</th>
+          <th scope="col">Due Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Send Email</td>
+          <td>In Progress</td>
+          <td>3</td>
+          <td>2021/04/05</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Send Docs</td>
+          <td>To DO</td>
+          <td>3</td>
+          <td>2021/04/05</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>To Do</td>
+          <td>In Progress</td>
+          <td>5</td>
+          <td>2021/04/10</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
