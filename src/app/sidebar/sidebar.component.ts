@@ -23,11 +23,12 @@ export class SidebarComponent implements OnInit {
       TaskId : 0,
       TaskName : '',
       Progress : 0,
-      DueDate : 0
+      DueDate : ''
     }
   }
 
   onSubmit(form:NgForm){
+    console.log(form.value)
     this.taskService.postTaskDetail(form.value).subscribe(
       res => {
         this.resetForm(form)

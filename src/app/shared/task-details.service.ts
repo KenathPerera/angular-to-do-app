@@ -13,6 +13,6 @@ export class TaskDetailsService {
   constructor(private http:HttpClient) { }
 
   postTaskDetail(formData:TaskDetail){
-  return this.http.post(this.base_url+"/TaskDetail",formData)
+  return this.http.post(this.base_url+"TaskDetail",formData)
   }
 }
