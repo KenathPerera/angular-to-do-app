@@ -27,7 +27,7 @@ export class SidebarComponent implements OnInit {
     this.taskService.retriveTaskDetails();
     setTimeout(() => {                           //<<<---using ()=> syntax
       this.showprogress();
-    }, 2000);
+    }, 1000);
   }
 
   resetForm(form?: NgForm) {
@@ -113,14 +113,9 @@ export class SidebarComponent implements OnInit {
           //data:[1,2,0],
           data: [this.taskService.toDoCount, this.taskService.inProgressCount, this.taskService.doneCount],
           backgroundColor: [
-            'blue',
-            'yellow',
-            'green'
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)'
+            '#007bff',
+            '#ffc107',
+            '#28a745'
           ],
           borderWidth: 1
         }]

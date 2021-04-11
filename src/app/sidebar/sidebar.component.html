@@ -1,9 +1,9 @@
 
 <div class="row row-page">
   <div class="col-5">
-    <div class="card" style="width:100%;">
+    <div class="card">
       <div class="card-body">
-        <h5 class="card-title"><i class="fas fa-tasks"></i> Add Task
+        <h5 class="card-title text-primary text-lg"><i class="fas fa-tasks "></i> Add Task
         </h5>
         <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
           <input name="TaskId" #TaskId="ngModel" [(ngModel)]="taskService.formData.TaskId" type="hidden" [value]="taskService.formData.TaskId"/>
@@ -11,7 +11,7 @@
             <div class="input-group">
               <div class="input-group-prepend">
                 <div class="input-group-text bg-white">
-                  <i class="fas fa-plus-square"></i>
+                  <i class="fas fa-plus-square text-success"></i>
                 </div>
               </div>
               <input name="TaskName" #TaskName="ngModel" [(ngModel)]="taskService.formData.TaskName" type="text" class="form-control" placeholder="Task Name" required>
@@ -21,7 +21,7 @@
             <div class="input-group">
               <div class="input-group-prepend">
                 <div class="input-group-text bg-white">
-                  <i class="fas fa-spinner"></i>
+                  <i class="fas fa-spinner text-info"></i>
                 </div>
               </div>
               <select name="Progress" #Progress="ngModel" [(ngModel)]="taskService.formData.Progress" class="form-control" aria-label="Default select example">
@@ -36,7 +36,7 @@
             <div class="input-group">
               <div class="input-group-prepend">
                 <div class="input-group-text bg-white">
-                  <i class="fas fa-calendar-day"></i>
+                  <i class="fas fa-calendar-day text-warning"></i>
                 </div>
               </div>
               <input name="DueDate" #DueDate="ngModel" [(ngModel)]="taskService.formData.DueDate" class="form-control" placeholder="YYYY/MM/DD" type="text" required/>
@@ -50,7 +50,7 @@
 
       </div>
     </div>
-    <div class="card" style="width:100%;">
+    <div class="card mt-3">
       <div class="card-body">
         <h5 class="card-title"><i class="fas fa-chart-pie"></i> Progress Diagram
         </h5>
@@ -72,7 +72,16 @@
       <tbody>
         <tr *ngFor="let data of taskService.taskList">
           <td (click)="fillForm(data)">{{data.TaskName}}</td>
-          <td (click)="fillForm(data)">{{data.Progress}}</td>
+          <td (click)="fillForm(data)" *ngIf="data.Progress == 1 " [ngClass]="{'bg-info' : data.Progress == 1}">
+            To Do
+           </td>
+           <td (click)="fillForm(data)" *ngIf="data.Progress == 2 " [ngClass]="{'bg-warning' : data.Progress == 2}">
+            In Progress
+           </td>
+           <td (click)="fillForm(data)" *ngIf="data.Progress == 3 " [ngClass]="{'bg-success' : data.Progress == 3}">
+            Done
+           </td>
+          <!-- <td (click)="fillForm(data)">{{data.Progress}}</td> -->
           <td (click)="fillForm(data)">{{calculateDiff(data.DueDate)}}</td>
           <td (click)="fillForm(data)">{{data.DueDate}}</td>
           <td (click)="deleteTaskDetail(data.TaskId)" ><i class="fas fa-trash fa-lg text-danger"></i></td>
