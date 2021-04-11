@@ -10,7 +10,9 @@ export class TaskDetailsService {
   formData = new TaskDetail();
   readonly base_url = 'http://localhost:64318/api/'
   taskList: TaskDetail[];
-  rdcModel: any;
+  toDoCount = 0;
+  inProgressCount = 0;
+  doneCount = 0;
 
   constructor(private http: HttpClient) { }
 
@@ -18,8 +20,8 @@ export class TaskDetailsService {
     return this.http.post(this.base_url + "TaskDetail", formData)
   }
 
-  updateTaskDetails(formData: TaskDetail){
-    return this.http.put(this.base_url + "TaskDetail/"+formData.TaskId, formData)
+  updateTaskDetails(formData: TaskDetail) {
+    return this.http.put(this.base_url + "TaskDetail/" + formData.TaskId, formData)
   }
 
   retriveTaskDetails() {
@@ -27,10 +29,25 @@ export class TaskDetailsService {
       .toPromise()
       .then(res => {
         this.taskList = res as TaskDetail[];
+        this.toDoCount = 0;
+        this.inProgressCount = 0;
+        this.doneCount = 0;
+        for (var product of this.taskList) {
+          if (product.Progress == 1) {
+            this.toDoCount++;
+          }
+          else if (product.Progress == 2) {
+            this.inProgressCount++;
+          }
+          else {
+            this.doneCount++;
+          }
+        }
+        console.log(this.toDoCount)
       })
   }
 
-  deleteTaskDetail(id){
-    return this.http.delete(this.base_url + "TaskDetail/"+id)
+  deleteTaskDetail(id) {
+    return this.http.delete(this.base_url + "TaskDetail/" + id)
   }
 }

@@ -19,36 +19,15 @@ export class SidebarComponent implements OnInit {
     private toast: ToastrService) { }
 
   ngOnInit() {
+    this.reloadPage();
+  }
+
+  reloadPage() {
     this.resetForm();
     this.taskService.retriveTaskDetails();
-    //console.log(this.taskService.rdcModel[0])
-    //this.taskService.taskList[0].Progress
-    // // pie chart:
-    // this.PieChart.push(new Chart('pieChart', {
-    //   type: 'pie',
-    //   data: {
-    //     labels: ["To Do", "In Progress", "Done"],
-    //     datasets: [{
-    //       label: '# of Votes',
-    //       data: [9, 7, 3],
-    //       backgroundColor: [
-    //         'rgba(255, 99, 132, 0.2)',
-    //         'rgba(54, 162, 235, 0.2)',
-    //         'rgba(255, 206, 86, 0.2)'
-    //       ],
-    //       borderColor: [
-    //         'rgba(255,99,132,1)',
-    //         'rgba(54, 162, 235, 1)',
-    //         'rgba(255, 206, 86, 1)'
-    //       ],
-    //       borderWidth: 1
-    //     }]
-    //   },
-    //   options: {
-
-    //   }
-    // }));
-
+    setTimeout(() => {                           //<<<---using ()=> syntax
+      this.showprogress();
+    }, 2000);
   }
 
   resetForm(form?: NgForm) {
@@ -63,8 +42,6 @@ export class SidebarComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(this.taskService.formData.TaskId)
-    console.log(form.value)
     if (this.taskService.formData.TaskId === 0) {
       this.insertData(form);
     }
@@ -79,7 +56,7 @@ export class SidebarComponent implements OnInit {
       res => {
         this.resetForm(form)
         this.toast.success('Submitted Successfully', 'Task Details Saved')
-        this.taskService.retriveTaskDetails();
+        this.reloadPage();
       },
       err => {
         console.log(err);
@@ -93,7 +70,7 @@ export class SidebarComponent implements OnInit {
       res => {
         this.resetForm(form)
         this.toast.info('Updated Successfully', 'Task Details Updated')
-        this.taskService.retriveTaskDetails();
+        this.reloadPage();
       },
       err => {
         console.log(err);
@@ -107,7 +84,7 @@ export class SidebarComponent implements OnInit {
       this.taskService.deleteTaskDetail(id).subscribe(
         res => {
           this.toast.warning('Deleted Successfully', 'Task Details Deleted')
-          this.taskService.retriveTaskDetails();
+          this.reloadPage();
         },
         err => {
           console.log(err);
@@ -121,14 +98,37 @@ export class SidebarComponent implements OnInit {
     var date1: any = new Date(date);
     var date2: any = new Date();
     var diffDays: any = Math.floor((date1 - date2) / (1000 * 60 * 60 * 24));
-
     return diffDays;
   }
 
+  count = 0;
   showprogress() {
-    this.taskService.taskList.forEach((currentValue, index) => {
-      console.log(currentValue.Progress)
-    });
+    console.log(this.taskService.toDoCount)
+    this.PieChart.push(new Chart('pieChart', {
+      type: 'pie',
+      data: {
+        labels: ["To Do", "In Progress", "Done"],
+        datasets: [{
+          label: '# of Votes',
+          //data:[1,2,0],
+          data: [this.taskService.toDoCount, this.taskService.inProgressCount, this.taskService.doneCount],
+          backgroundColor: [
+            'blue',
+            'yellow',
+            'green'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+
+      }
+    }));
   }
 
   fillForm(Id: TaskDetail) {
