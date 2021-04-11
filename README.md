@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
 
 
-This is Sample Project that I created to show my skills in Angular 7 and .net Core.
+This is Sample Project that I'm developing to show my skills in Angular 7 and .net Core.
 In This project I have Used Following Technologies
     * Angular 7 - Front End Development
     * .Net Core - Back End Development
