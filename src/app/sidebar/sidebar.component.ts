@@ -56,7 +56,7 @@ export class SidebarComponent implements OnInit {
     console.log(form.value)
     this.taskService.postTaskDetail(form.value).subscribe(
       res => {
-        this.resetForm(form)
+        //this.resetForm(form)
         this.toast.success('Submitted Successfully', 'Task Details Saved')
         this.reloadPage();
       },
@@ -70,7 +70,7 @@ export class SidebarComponent implements OnInit {
   updateData(form: NgForm) {
     this.taskService.updateTaskDetails(form.value).subscribe(
       res => {
-        this.resetForm(form)
+        //this.resetForm(form)
         this.toast.info('Updated Successfully', 'Task Details Updated')
         this.reloadPage();
       },
