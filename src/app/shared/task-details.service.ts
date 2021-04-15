@@ -13,6 +13,8 @@ export class TaskDetailsService {
   toDoCount = 0;
   inProgressCount = 0;
   doneCount = 0;
+  todayDue = 0;
+  overDue = 0;
 
   constructor(private http: HttpClient) { }
 
@@ -32,11 +34,20 @@ export class TaskDetailsService {
         this.toDoCount = 0;
         this.inProgressCount = 0;
         this.doneCount = 0;
-        for (var product of this.taskList) {
-          if (product.Progress == 1) {
+        this.todayDue = 0;
+        this.overDue = 0;
+        for (var task of this.taskList) {
+          if(this.calculateDiff(task.DueDate) == 0){
+            this.todayDue++;
+          }
+          else if(this.calculateDiff(task.DueDate) < 0){
+            this.overDue++;
+          }
+
+          if (task.Progress == 1) {
             this.toDoCount++;
           }
-          else if (product.Progress == 2) {
+          else if (task.Progress == 2) {
             this.inProgressCount++;
           }
           else {
@@ -49,5 +60,12 @@ export class TaskDetailsService {
 
   deleteTaskDetail(id) {
     return this.http.delete(this.base_url + "TaskDetail/" + id)
+  }
+
+  calculateDiff(date: string) {
+    var date1: any = new Date(date);
+    var date2: any = new Date();
+    var diffDays: any = Math.floor((date1 - date2) / (1000 * 60 * 60 * 24));
+    return diffDays;
   }
 }
