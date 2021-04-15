@@ -1,5 +1,14 @@
 .font-five{
     font-family: GeosansLight;
 }
+.page-container{
+    margin-bottom: 10px;
+}
+.navbar-brand{
+    font-size: 2.25rem;
+    width: 100%;
+    text-align: center;
+}
+
 
 
