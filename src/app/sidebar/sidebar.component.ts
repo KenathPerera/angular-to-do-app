@@ -7,6 +7,7 @@ import { Chart } from 'chart.js';
 import { TaskDetailsService } from '../shared/task-details.service';
 import { TaskDetail } from '../shared/task-detail.model';
 
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -52,6 +53,7 @@ export class SidebarComponent implements OnInit {
   }
 
   insertData(form: NgForm) {
+    console.log(form.value)
     this.taskService.postTaskDetail(form.value).subscribe(
       res => {
         this.resetForm(form)
