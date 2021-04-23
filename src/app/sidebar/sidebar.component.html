@@ -66,7 +66,7 @@
     <button type="button" class="btn btn-danger mb-2  ml-2">
       Over Due <span class="badge badge-light"> {{taskService.overDue}}</span>
     </button>
-    <table class="table table-hover ">
+    <table ng-if="taskService.taskList"id="example" class="table table-hover " datatable>
       <thead >
         <tr>
           <th scope="col">Task</th>
@@ -77,7 +77,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of taskService.taskList">
+        <tr  *ngFor="let data of taskService.taskList">
           <td (click)="fillForm(data)">{{data.TaskName}}</td>
           <td (click)="fillForm(data)" *ngIf="data.Progress == 1 " [ngClass]="{'bg-info' : data.Progress == 1}">
             To Do

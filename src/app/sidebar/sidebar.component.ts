@@ -17,7 +17,14 @@ export class SidebarComponent implements OnInit {
 
   PieChart = [];
   constructor(private taskService: TaskDetailsService,
-    private toast: ToastrService) { }
+    private toast: ToastrService) { 
+      
+    setTimeout(function () {
+      $(function () {
+        $('#example').DataTable();
+      });
+    }, 3000);
+    }
 
   ngOnInit() {
     this.reloadPage();
